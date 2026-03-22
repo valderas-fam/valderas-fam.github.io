@@ -355,19 +355,34 @@
       justify-content: space-between;
       margin-bottom: 4rem;
     }
-    .members-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 1.5rem;
+    .members-scroll-wrap {
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      scroll-snap-type: x mandatory;
+      padding-bottom: 1.5rem;
+      cursor: grab;
     }
-    .member-card {}
+    .members-scroll-wrap:active { cursor: grabbing; }
+    .members-scroll-wrap::-webkit-scrollbar { height: 4px; }
+    .members-scroll-wrap::-webkit-scrollbar-track { background: transparent; }
+    .members-scroll-wrap::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+    .members-grid {
+      display: flex;
+      gap: 1.5rem;
+      width: max-content;
+    }
+    .member-card {
+      width: 210px;
+      flex-shrink: 0;
+      scroll-snap-align: start;
+    }
     .member-photo {
       aspect-ratio: 3 / 4;
       margin-bottom: 1.2rem;
     }
     .member-name {
       font-family: var(--serif);
-      font-size: 1.35rem;
+      font-size: 1.2rem;
       font-weight: 400;
       margin-bottom: .2rem;
     }
@@ -1030,112 +1045,92 @@
         <h2 class="section-title">Meet the <em>Family</em></h2>
       </div>
       <p class="body-text" style="max-width:30ch; text-align:right;">
-        Add portraits and bios for each family member. This section grows with you.
+        Photos coming soon — portraits will appear here for each family member.
       </p>
     </div>
 
+    <div class="members-scroll-wrap">
     <div class="members-grid">
 
-      <!-- Judge Harold — special card with link -->
-      <div class="member-card" style="position:relative;">
-        <div class="member-photo photo-placeholder" style="aspect-ratio:3/4; min-height:0;">
-          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
-            <circle cx="12" cy="8" r="4"/><path d="M20 21a8 8 0 1 0-16 0"/>
-          </svg>
-          <span class="label">Add Photo</span>
-        </div>
-        <p class="member-relation">Grandfather · Judge · WWII Veteran</p>
+      <div class="member-card">
+        <div class="member-photo photo-placeholder" style="aspect-ratio:3/4; min-height:0;"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><circle cx="12" cy="8" r="4"/><path d="M20 21a8 8 0 1 0-16 0"/></svg><span class="label">Add Photo</span></div>
+        <h3 class="member-name">Marisa Garcia Luna</h3>
+      </div>
+
+      <div class="member-card">
+        <div class="member-photo photo-placeholder" style="aspect-ratio:3/4; min-height:0;"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><circle cx="12" cy="8" r="4"/><path d="M20 21a8 8 0 1 0-16 0"/></svg><span class="label">Add Photo</span></div>
         <h3 class="member-name">Harold Luis Valderas</h3>
         <p class="member-dates">1923 – 2007</p>
-        <a href="harold.html" style="display:inline-block; margin-top:.75rem; font-size:.65rem; letter-spacing:.18em; text-transform:uppercase; color:var(--sage); border-bottom:1px solid var(--sage); padding-bottom:2px;">His Story →</a>
+        <a href="harold.html" style="display:inline-block; margin-top:.6rem; font-size:.6rem; letter-spacing:.16em; text-transform:uppercase; color:var(--sage); border-bottom:1px solid var(--sage); padding-bottom:2px;">His Story →</a>
       </div>
 
       <div class="member-card">
-        <div class="member-photo photo-placeholder" style="aspect-ratio:3/4; min-height:0;">
-          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
-            <circle cx="12" cy="8" r="4"/><path d="M20 21a8 8 0 1 0-16 0"/>
-          </svg>
-          <span class="label">Add Photo</span>
-        </div>
-        <p class="member-relation">Grandmother</p>
-        <h3 class="member-name">Marisa Garcia Luna</h3>
-        <p class="member-dates">1945 – Present</p>
-      </div>
-
-      <div class="member-card">
-        <div class="member-photo photo-placeholder" style="aspect-ratio:3/4; min-height:0;">
-          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
-            <circle cx="12" cy="8" r="4"/><path d="M20 21a8 8 0 1 0-16 0"/>
-          </svg>
-          <span class="label">Add Photo</span>
-        </div>
-        <p class="member-relation">Father</p>
+        <div class="member-photo photo-placeholder" style="aspect-ratio:3/4; min-height:0;"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><circle cx="12" cy="8" r="4"/><path d="M20 21a8 8 0 1 0-16 0"/></svg><span class="label">Add Photo</span></div>
         <h3 class="member-name">Harold Michael Valderas</h3>
-        <p class="member-dates">1966 – Present</p>
+        <p class="member-dates">1966 –</p>
       </div>
 
       <div class="member-card">
-        <div class="member-photo photo-placeholder" style="aspect-ratio:3/4; min-height:0;">
-          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
-            <circle cx="12" cy="8" r="4"/><path d="M20 21a8 8 0 1 0-16 0"/>
-          </svg>
-          <span class="label">Add Photo</span>
-        </div>
-        <p class="member-relation">Mother</p>
-        <h3 class="member-name">Jennifer Lynn Palmer</h3>
-        <p class="member-dates">Present</p>
+        <div class="member-photo photo-placeholder" style="aspect-ratio:3/4; min-height:0;"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><circle cx="12" cy="8" r="4"/><path d="M20 21a8 8 0 1 0-16 0"/></svg><span class="label">Add Photo</span></div>
+        <h3 class="member-name">Elizabeth A. Valderas</h3>
       </div>
 
       <div class="member-card">
-        <div class="member-photo photo-placeholder" style="aspect-ratio:3/4; min-height:0;">
-          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
-            <circle cx="12" cy="8" r="4"/><path d="M20 21a8 8 0 1 0-16 0"/>
-          </svg>
-          <span class="label">Add Photo</span>
-        </div>
-        <p class="member-relation">Sister</p>
-        <h3 class="member-name">Isabel K. Valderas</h3>
-        <p class="member-dates">Present</p>
+        <div class="member-photo photo-placeholder" style="aspect-ratio:3/4; min-height:0;"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><circle cx="12" cy="8" r="4"/><path d="M20 21a8 8 0 1 0-16 0"/></svg><span class="label">Add Photo</span></div>
+        <h3 class="member-name">Sean Kevin Valderas</h3>
       </div>
 
       <div class="member-card">
-        <div class="member-photo photo-placeholder" style="aspect-ratio:3/4; min-height:0;">
-          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
-            <circle cx="12" cy="8" r="4"/><path d="M20 21a8 8 0 1 0-16 0"/>
-          </svg>
-          <span class="label">Add Photo</span>
-        </div>
-        <p class="member-relation">Brother</p>
+        <div class="member-photo photo-placeholder" style="aspect-ratio:3/4; min-height:0;"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><circle cx="12" cy="8" r="4"/><path d="M20 21a8 8 0 1 0-16 0"/></svg><span class="label">Add Photo</span></div>
+        <h3 class="member-name">Sean Kevin Valderas II</h3>
+      </div>
+
+      <div class="member-card">
+        <div class="member-photo photo-placeholder" style="aspect-ratio:3/4; min-height:0;"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><circle cx="12" cy="8" r="4"/><path d="M20 21a8 8 0 1 0-16 0"/></svg><span class="label">Add Photo</span></div>
+        <h3 class="member-name">Ian</h3>
+      </div>
+
+      <div class="member-card">
+        <div class="member-photo photo-placeholder" style="aspect-ratio:3/4; min-height:0;"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><circle cx="12" cy="8" r="4"/><path d="M20 21a8 8 0 1 0-16 0"/></svg><span class="label">Add Photo</span></div>
+        <h3 class="member-name">Cora</h3>
+      </div>
+
+      <div class="member-card">
+        <div class="member-photo photo-placeholder" style="aspect-ratio:3/4; min-height:0;"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><circle cx="12" cy="8" r="4"/><path d="M20 21a8 8 0 1 0-16 0"/></svg><span class="label">Add Photo</span></div>
+        <h3 class="member-name">Teresa</h3>
+      </div>
+
+      <div class="member-card">
+        <div class="member-photo photo-placeholder" style="aspect-ratio:3/4; min-height:0;"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><circle cx="12" cy="8" r="4"/><path d="M20 21a8 8 0 1 0-16 0"/></svg><span class="label">Add Photo</span></div>
+        <h3 class="member-name">Marisa Torres Valderas</h3>
+      </div>
+
+      <div class="member-card">
+        <div class="member-photo photo-placeholder" style="aspect-ratio:3/4; min-height:0;"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><circle cx="12" cy="8" r="4"/><path d="M20 21a8 8 0 1 0-16 0"/></svg><span class="label">Add Photo</span></div>
         <h3 class="member-name">Cristobal J. Torres Valderas</h3>
-        <p class="member-dates">Present</p>
       </div>
 
       <div class="member-card">
-        <div class="member-photo photo-placeholder" style="aspect-ratio:3/4; min-height:0;">
-          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
-            <circle cx="12" cy="8" r="4"/><path d="M20 21a8 8 0 1 0-16 0"/>
-          </svg>
-          <span class="label">Add Photo</span>
-        </div>
-        <p class="member-relation">Uncle</p>
-        <h3 class="member-name">Raymond Valderas</h3>
-        <p class="member-dates">1948 – 2015</p>
+        <div class="member-photo photo-placeholder" style="aspect-ratio:3/4; min-height:0;"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><circle cx="12" cy="8" r="4"/><path d="M20 21a8 8 0 1 0-16 0"/></svg><span class="label">Add Photo</span></div>
+        <h3 class="member-name">Jennifer Lynn Palmer</h3>
       </div>
 
-      <!-- "Add a member" card -->
       <div class="member-card">
-        <div class="member-photo photo-placeholder" style="aspect-ratio:3/4; min-height:0; border-style:dashed; border-color: rgba(107,123,96,.3);">
-          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
-            <circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/>
-            <line x1="8" y1="12" x2="16" y2="12"/>
-          </svg>
-          <span class="label">Add a Family Member</span>
-        </div>
-        <p class="member-relation" style="opacity:.4">Your Relation</p>
-        <h3 class="member-name" style="opacity:.35">Add Name</h3>
-        <p class="member-dates" style="opacity:.3">Year – Present</p>
+        <div class="member-photo photo-placeholder" style="aspect-ratio:3/4; min-height:0;"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><circle cx="12" cy="8" r="4"/><path d="M20 21a8 8 0 1 0-16 0"/></svg><span class="label">Add Photo</span></div>
+        <h3 class="member-name">Isabel K. Valderas</h3>
       </div>
 
+      <div class="member-card">
+        <div class="member-photo photo-placeholder" style="aspect-ratio:3/4; min-height:0;"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><circle cx="12" cy="8" r="4"/><path d="M20 21a8 8 0 1 0-16 0"/></svg><span class="label">Add Photo</span></div>
+        <h3 class="member-name">Gabrielle L. Valderas</h3>
+      </div>
+
+      <div class="member-card">
+        <div class="member-photo photo-placeholder" style="aspect-ratio:3/4; min-height:0;"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><circle cx="12" cy="8" r="4"/><path d="M20 21a8 8 0 1 0-16 0"/></svg><span class="label">Add Photo</span></div>
+        <h3 class="member-name">Jake Sobieski</h3>
+      </div>
+
+    </div>
     </div>
   </section>
 
@@ -1200,190 +1195,150 @@
 
   <!-- ─── FAMILY TREE ───────────────────────────────────────── -->
   <section class="tree-section reveal" id="tree" style="padding-bottom:5rem;">
-    <p class="section-eyebrow" style="text-align:center;">Five Generations</p>
+    <p class="section-eyebrow" style="text-align:center;">Six Generations</p>
     <h2 class="section-title" style="margin-bottom:1rem;">The Valderas <em>Family Tree</em></h2>
     <div class="divider" style="margin: 1.5rem auto;"></div>
     <p class="body-text" style="text-align:center; max-width:52ch; margin: 0 auto 3.5rem;">
       From 19th-century Spain and the American frontier to Fort Worth, Texas —
-      five generations of the Valderas family, sourced from the family's Ancestry records.
+      six generations of the Valderas family, sourced from the family's Ancestry records.
     </p>
 
     <div class="tree-container">
-      <div style="display:flex; flex-direction:column; align-items:center; gap:0; min-width:900px;">
+      <div style="display:flex; flex-direction:column; align-items:center; gap:0; min-width:960px;">
 
-        <!-- ── GEN 5: GREAT-GREAT-GRANDPARENTS ── -->
-        <div style="width:100%; display:flex; justify-content:space-around; padding: 0 2rem;">
-          <div style="display:flex; flex-direction:column; align-items:center; gap:.5rem;">
-            <div style="font-size:.55rem; letter-spacing:.2em; text-transform:uppercase; color:var(--light); text-align:center;">Great-Great-Grandparents</div>
-            <div style="display:flex; gap:1rem; align-items:center;">
-              <div class="tree-node" style="font-size:.75rem; padding:.8rem 1rem; min-width:160px; text-align:center;">
-                <div class="node-relation" style="font-size:.5rem;">Great-Great-Grandfather</div>
-                <div class="node-name" style="font-size:.85rem;">William J. Cunningham</div>
-                <div class="node-years" style="font-size:.65rem;">1857 – 1942</div>
-              </div>
-              <div style="font-family:var(--serif); color:var(--gold); font-size:1.1rem; opacity:.6;">×</div>
-              <div class="tree-node" style="font-size:.75rem; padding:.8rem 1rem; min-width:160px; text-align:center;">
-                <div class="node-relation" style="font-size:.5rem;">Great-Great-Grandmother</div>
-                <div class="node-name" style="font-size:.85rem;">Beatrice Kosinski</div>
-                <div class="node-years" style="font-size:.65rem;">1869 – 1950</div>
-              </div>
+        <!-- GEN 5 -->
+        <div style="width:100%; display:flex; justify-content:space-around; padding:0 2rem;">
+          <div style="display:flex; gap:.8rem; align-items:center;">
+            <div class="tree-node" style="padding:.7rem .9rem; min-width:150px; text-align:center;">
+              <div class="node-name" style="font-size:.82rem;">William J. Cunningham</div>
+              <div class="node-years" style="font-size:.65rem;">1857 – 1942</div>
+            </div>
+            <div style="font-family:var(--serif); color:var(--gold); font-size:1rem; opacity:.5;">×</div>
+            <div class="tree-node" style="padding:.7rem .9rem; min-width:150px; text-align:center;">
+              <div class="node-name" style="font-size:.82rem;">Beatrice Kosinski</div>
+              <div class="node-years" style="font-size:.65rem;">1869 – 1950</div>
             </div>
           </div>
-
-          <div style="display:flex; flex-direction:column; align-items:center; gap:.5rem;">
-            <div style="font-size:.55rem; letter-spacing:.2em; text-transform:uppercase; color:var(--light); text-align:center;">Great-Great-Grandparents</div>
-            <div style="display:flex; gap:1rem; align-items:center;">
-              <div class="tree-node" style="font-size:.75rem; padding:.8rem 1rem; min-width:140px; text-align:center;">
-                <div class="node-relation" style="font-size:.5rem;">Great-Great-Grandfather</div>
-                <div class="node-name" style="font-size:.85rem;">Nicolas Garcia</div>
-                <div class="node-years" style="font-size:.65rem;">Spain</div>
-              </div>
-              <div style="font-family:var(--serif); color:var(--gold); font-size:1.1rem; opacity:.6;">×</div>
-              <div class="tree-node" style="font-size:.75rem; padding:.8rem 1rem; min-width:140px; text-align:center;">
-                <div class="node-relation" style="font-size:.5rem;">Great-Great-Grandmother</div>
-                <div class="node-name" style="font-size:.85rem;">Francisca Lopez Gil</div>
-                <div class="node-years" style="font-size:.65rem;">Spain</div>
-              </div>
+          <div style="display:flex; gap:.8rem; align-items:center;">
+            <div class="tree-node" style="padding:.7rem .9rem; min-width:130px; text-align:center;">
+              <div class="node-name" style="font-size:.82rem;">Nicolas Garcia</div>
+              <div class="node-years" style="font-size:.65rem;">Spain</div>
+            </div>
+            <div style="font-family:var(--serif); color:var(--gold); font-size:1rem; opacity:.5;">×</div>
+            <div class="tree-node" style="padding:.7rem .9rem; min-width:130px; text-align:center;">
+              <div class="node-name" style="font-size:.82rem;">Francisca Lopez Gil</div>
+              <div class="node-years" style="font-size:.65rem;">Spain</div>
             </div>
           </div>
         </div>
 
-        <!-- Connectors down -->
-        <div style="width:100%; display:flex; justify-content:space-around; padding:0 10rem;">
+        <div style="width:100%; display:flex; justify-content:space-around; padding:0 11rem;">
           <div style="width:1px; height:2rem; background:var(--border);"></div>
           <div style="width:1px; height:2rem; background:var(--border);"></div>
         </div>
 
-        <!-- ── GEN 4: GREAT-GRANDPARENTS ── -->
-        <div style="width:100%; display:flex; justify-content:space-around; padding: 0 2rem;">
-          <div style="display:flex; flex-direction:column; align-items:center; gap:.5rem;">
-            <div style="font-size:.55rem; letter-spacing:.2em; text-transform:uppercase; color:var(--light); margin-bottom:.25rem;">Great-Grandparents · Valderas &amp; Cunningham Lines</div>
-            <div style="display:flex; gap:1rem; align-items:center;">
-              <div class="tree-node" style="padding:.9rem 1.2rem; min-width:190px; text-align:center;">
-                <div class="node-relation" style="font-size:.5rem;">Great-Grandfather</div>
-                <div class="node-name" style="font-size:.9rem;">Luis Alberto Valderas Vargas</div>
-                <div class="node-years">1901 – 1956</div>
-              </div>
-              <div style="font-family:var(--serif); color:var(--gold); font-size:1.1rem; opacity:.6;">×</div>
-              <div class="tree-node" style="padding:.9rem 1.2rem; min-width:190px; text-align:center;">
-                <div class="node-relation" style="font-size:.5rem;">Great-Grandmother</div>
-                <div class="node-name" style="font-size:.9rem;">Isabel Elizabeth Cunningham</div>
-                <div class="node-years">1894 – 1979</div>
-              </div>
+        <!-- GEN 4 -->
+        <div style="width:100%; display:flex; justify-content:space-around; padding:0 2rem;">
+          <div style="display:flex; gap:.8rem; align-items:center;">
+            <div class="tree-node" style="padding:.85rem 1.1rem; min-width:180px; text-align:center;">
+              <div class="node-name" style="font-size:.88rem;">Luis Alberto Valderas Vargas</div>
+              <div class="node-years">1901 – 1956</div>
+            </div>
+            <div style="font-family:var(--serif); color:var(--gold); font-size:1rem; opacity:.5;">×</div>
+            <div class="tree-node" style="padding:.85rem 1.1rem; min-width:180px; text-align:center;">
+              <div class="node-name" style="font-size:.88rem;">Isabel Elizabeth Cunningham</div>
+              <div class="node-years">1894 – 1979</div>
             </div>
           </div>
-
-          <div style="display:flex; flex-direction:column; align-items:center; gap:.5rem;">
-            <div style="font-size:.55rem; letter-spacing:.2em; text-transform:uppercase; color:var(--light); margin-bottom:.25rem;">Great-Grandparents · Garcia Luna Line</div>
-            <div style="display:flex; gap:1rem; align-items:center;">
-              <div class="tree-node" style="padding:.9rem 1.2rem; min-width:170px; text-align:center;">
-                <div class="node-relation" style="font-size:.5rem;">Great-Grandfather</div>
-                <div class="node-name" style="font-size:.9rem;">Miguel Garcia Lopez</div>
-                <div class="node-years">1919 –</div>
-              </div>
-              <div style="font-family:var(--serif); color:var(--gold); font-size:1.1rem; opacity:.6;">×</div>
-              <div class="tree-node" style="padding:.9rem 1.2rem; min-width:170px; text-align:center;">
-                <div class="node-relation" style="font-size:.5rem;">Great-Grandmother</div>
-                <div class="node-name" style="font-size:.9rem;">Maria Josefa Luna Baja</div>
-                <div class="node-years">1925 –</div>
-              </div>
+          <div style="display:flex; gap:.8rem; align-items:center;">
+            <div class="tree-node" style="padding:.85rem 1.1rem; min-width:155px; text-align:center;">
+              <div class="node-name" style="font-size:.88rem;">Miguel Garcia Lopez</div>
+              <div class="node-years">1919 –</div>
+            </div>
+            <div style="font-family:var(--serif); color:var(--gold); font-size:1rem; opacity:.5;">×</div>
+            <div class="tree-node" style="padding:.85rem 1.1rem; min-width:155px; text-align:center;">
+              <div class="node-name" style="font-size:.88rem;">Maria Josefa Luna Baja</div>
+              <div class="node-years">1925 –</div>
             </div>
           </div>
         </div>
 
-        <!-- Connectors converging -->
-        <div style="display:flex; width:60%; justify-content:space-around;">
+        <div style="display:flex; width:55%; justify-content:space-around;">
           <div style="width:1px; height:2rem; background:var(--border);"></div>
           <div style="width:1px; height:2rem; background:var(--border);"></div>
         </div>
 
-        <!-- ── GEN 3: GRANDPARENTS ── -->
-        <div style="display:flex; gap:2rem; align-items:center; justify-content:center;">
-          <div style="text-align:center;">
-            <div style="font-size:.55rem; letter-spacing:.2em; text-transform:uppercase; color:var(--gold); margin-bottom:.5rem;">Grandparents</div>
-            <div style="display:flex; gap:1.2rem; align-items:center;">
-              <!-- Special highlight for Judge Harold -->
-              <a href="harold.html" style="text-decoration:none;">
-                <div class="tree-node" style="background:var(--olive); color:var(--cream); border-color:var(--gold); padding:1.2rem 1.5rem; min-width:200px; text-align:center; cursor:pointer; transition:all .2s;">
-                  <div class="node-relation" style="color:var(--gold); font-size:.5rem; letter-spacing:.2em;">Grandfather · Judge · Lt. Col.</div>
-                  <div class="node-name" style="color:var(--cream); font-size:1rem;">Harold Luis Valderas</div>
-                  <div class="node-years" style="color:rgba(245,241,234,.5);">1923 – 2007</div>
-                  <div style="font-size:.55rem; color:var(--gold); margin-top:.5rem; letter-spacing:.15em; text-transform:uppercase;">View Full Story →</div>
-                </div>
-              </a>
-              <div style="font-family:var(--serif); color:var(--gold); font-size:1.1rem; opacity:.6;">×</div>
-              <div class="tree-node" style="padding:1.2rem 1.5rem; min-width:180px; text-align:center;">
-                <div class="node-relation" style="font-size:.5rem;">Grandmother</div>
-                <div class="node-name" style="font-size:1rem;">Marisa Garcia Luna</div>
-                <div class="node-years">1945 – Present</div>
-              </div>
+        <!-- GEN 3 -->
+        <div style="display:flex; gap:1.2rem; align-items:center; justify-content:center;">
+          <a href="harold.html" style="text-decoration:none;">
+            <div class="tree-node" style="background:var(--olive); color:var(--cream); border-color:var(--gold); padding:1.1rem 1.4rem; min-width:195px; text-align:center; transition:all .2s;">
+              <div class="node-name" style="color:var(--cream); font-size:.98rem;">Harold Luis Valderas</div>
+              <div class="node-years" style="color:rgba(245,241,234,.5);">1923 – 2007</div>
+              <div style="font-size:.55rem; color:var(--gold); margin-top:.5rem; letter-spacing:.15em; text-transform:uppercase;">View Full Story →</div>
             </div>
+          </a>
+          <div style="font-family:var(--serif); color:var(--gold); font-size:1.1rem; opacity:.6;">×</div>
+          <div class="tree-node" style="padding:1.1rem 1.4rem; min-width:175px; text-align:center;">
+            <div class="node-name" style="font-size:.98rem;">Marisa Garcia Luna</div>
+            <div class="node-years">1945 –</div>
           </div>
         </div>
 
-        <!-- Connector -->
         <div style="width:1px; height:2rem; background:var(--border);"></div>
 
-        <!-- ── GEN 2: PARENTS (with siblings) ── -->
-        <div style="display:flex; flex-direction:column; align-items:center; gap:.5rem;">
-          <div style="font-size:.55rem; letter-spacing:.2em; text-transform:uppercase; color:var(--light); margin-bottom:.25rem;">Parents &amp; Aunts / Uncles</div>
-          <div style="display:flex; gap:1rem; align-items:center; flex-wrap:wrap; justify-content:center;">
-            <div class="tree-node placeholder" style="padding:.8rem 1rem; min-width:130px; text-align:center; font-size:.8rem;">
-              <div class="node-relation" style="font-size:.5rem;">Uncle</div>
-              <div class="node-name" style="font-size:.8rem;">Luie Valderas</div>
-              <div class="node-years" style="font-size:.65rem;">Living</div>
+        <!-- GEN 2 -->
+        <div style="display:flex; gap:.9rem; align-items:center; flex-wrap:wrap; justify-content:center;">
+          <div class="tree-node" style="padding:.8rem 1rem; min-width:125px; text-align:center;">
+            <div class="node-name" style="font-size:.82rem;">Luie Valderas</div>
+          </div>
+          <div class="tree-node" style="padding:.8rem 1rem; min-width:140px; text-align:center;">
+            <div class="node-name" style="font-size:.82rem;">Raymond Valderas</div>
+            <div class="node-years" style="font-size:.65rem;">1948 – 2015</div>
+          </div>
+          <div style="display:flex; gap:.9rem; align-items:center;">
+            <div class="tree-node" style="padding:.95rem 1.2rem; min-width:175px; text-align:center; border-color:var(--sage);">
+              <div class="node-name">Harold Michael Valderas</div>
+              <div class="node-years">1966 –</div>
             </div>
-            <div class="tree-node placeholder" style="padding:.8rem 1rem; min-width:130px; text-align:center; font-size:.8rem;">
-              <div class="node-relation" style="font-size:.5rem;">Uncle</div>
-              <div class="node-name" style="font-size:.8rem;">Raymond Valderas</div>
-              <div class="node-years" style="font-size:.65rem;">1948 – 2015</div>
+            <div style="font-family:var(--serif); color:var(--gold); font-size:1rem; opacity:.5;">×</div>
+            <div class="tree-node" style="padding:.95rem 1.2rem; min-width:160px; text-align:center; border-color:var(--sage);">
+              <div class="node-name">Jennifer Lynn Palmer</div>
             </div>
-            <!-- Father — highlighted -->
-            <div style="display:flex; gap:1rem; align-items:center;">
-              <div class="tree-node" style="padding:1rem 1.3rem; min-width:180px; text-align:center; border-color:var(--sage);">
-                <div class="node-relation" style="font-size:.5rem; color:var(--sage);">Father</div>
-                <div class="node-name">Harold Michael Valderas</div>
-                <div class="node-years">1966 – Present</div>
-              </div>
-              <div style="font-family:var(--serif); color:var(--gold); font-size:1.1rem; opacity:.6;">×</div>
-              <div class="tree-node" style="padding:1rem 1.3rem; min-width:170px; text-align:center; border-color:var(--sage);">
-                <div class="node-relation" style="font-size:.5rem; color:var(--sage);">Mother</div>
-                <div class="node-name">Jennifer Lynn Palmer</div>
-                <div class="node-years">Present</div>
-              </div>
-            </div>
-            <div class="tree-node placeholder" style="padding:.8rem 1rem; min-width:130px; text-align:center; font-size:.8rem;">
-              <div class="node-relation" style="font-size:.5rem;">Aunt</div>
-              <div class="node-name" style="font-size:.8rem;">Elizabeth A. Valderas</div>
-              <div class="node-years" style="font-size:.65rem;">Present</div>
-            </div>
-            <div class="tree-node placeholder" style="padding:.8rem 1rem; min-width:130px; text-align:center; font-size:.8rem;">
-              <div class="node-relation" style="font-size:.5rem;">Uncle</div>
-              <div class="node-name" style="font-size:.8rem;">Sean Kevin Valderas</div>
-              <div class="node-years" style="font-size:.65rem;">Present</div>
-            </div>
+          </div>
+          <div class="tree-node" style="padding:.8rem 1rem; min-width:140px; text-align:center;">
+            <div class="node-name" style="font-size:.82rem;">Elizabeth A. Valderas</div>
+          </div>
+          <div class="tree-node" style="padding:.8rem 1rem; min-width:140px; text-align:center;">
+            <div class="node-name" style="font-size:.82rem;">Sean Kevin Valderas</div>
           </div>
         </div>
 
-        <!-- Connector -->
         <div style="width:1px; height:2rem; background:var(--border);"></div>
 
-        <!-- ── GEN 1: GABBY & SIBLINGS ── -->
-        <div style="display:flex; gap:1.2rem; justify-content:center; flex-wrap:wrap;">
-          <div class="tree-node root">
-            <div class="node-relation" style="color:var(--sage-lt); font-size:.5rem; letter-spacing:.18em; text-transform:uppercase; margin-bottom:.2rem;">Site Owner</div>
+        <!-- GEN 1 -->
+        <div style="display:flex; gap:.9rem; justify-content:center; flex-wrap:wrap;">
+          <div class="tree-node" style="padding:.95rem 1.2rem; min-width:160px; text-align:center;">
             <div class="node-name">Gabrielle L. Valderas</div>
-            <div class="node-years" style="opacity:.6;">Present</div>
+            <div style="font-family:var(--serif); color:var(--gold); font-size:.85rem; margin-top:.4rem; opacity:.6;">× Jake Sobieski</div>
           </div>
-          <div class="tree-node" style="padding:1rem 1.3rem; min-width:170px; text-align:center;">
-            <div class="node-relation">Sister</div>
+          <div class="tree-node" style="padding:.95rem 1.2rem; min-width:155px; text-align:center;">
             <div class="node-name">Isabel K. Valderas</div>
-            <div class="node-years">Present</div>
           </div>
-          <div class="tree-node" style="padding:1rem 1.3rem; min-width:180px; text-align:center;">
-            <div class="node-relation">Brother</div>
+          <div class="tree-node" style="padding:.95rem 1.2rem; min-width:175px; text-align:center;">
             <div class="node-name">Cristobal J. Torres Valderas</div>
-            <div class="node-years">Present</div>
+            <div class="node-years" style="font-size:.65rem; margin-top:.3rem;">↳ Marisa Torres Valderas</div>
+          </div>
+          <div class="tree-node" style="padding:.95rem 1.2rem; min-width:145px; text-align:center;">
+            <div class="node-name">Sean Kevin Valderas II</div>
+          </div>
+          <div class="tree-node" style="padding:.8rem 1rem; min-width:100px; text-align:center;">
+            <div class="node-name" style="font-size:.88rem;">Ian</div>
+          </div>
+          <div class="tree-node" style="padding:.8rem 1rem; min-width:100px; text-align:center;">
+            <div class="node-name" style="font-size:.88rem;">Cora</div>
+          </div>
+          <div class="tree-node" style="padding:.8rem 1rem; min-width:100px; text-align:center;">
+            <div class="node-name" style="font-size:.88rem;">Teresa</div>
           </div>
         </div>
 
@@ -1393,7 +1348,6 @@
     <p style="text-align:center; margin-top:3rem; font-size:.75rem; color:var(--light); letter-spacing:.08em;">
       Data sourced from the family's
       <a href="https://www.ancestry.com/family-tree/tree/36726406/family" target="_blank" style="color:var(--sage); text-decoration:underline;">Ancestry.com tree</a>.
-      Photos coming soon — contribute yours via the form below.
     </p>
   </section>
 
