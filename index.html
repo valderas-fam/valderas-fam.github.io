@@ -603,6 +603,40 @@
       align-items: center;
     }
 
+    /* ─── FAMILY TREE COMPONENTS ──────────────────────────── */
+    .ftree-wrap { overflow-x:auto; -webkit-overflow-scrolling:touch; padding:0 .5rem 2rem; }
+    .ftree { display:flex; flex-direction:column; align-items:center; min-width:920px; }
+    .ftree-row--two { display:flex; width:100%; }
+    .ftree-half { flex:1; display:flex; flex-direction:column; align-items:center; padding:0 1.5rem; }
+    .ftree-couple { display:flex; align-items:center; gap:.6rem; }
+    .ftree-x { font-family:var(--serif); color:var(--gold); opacity:.7; font-size:.9rem; flex-shrink:0; }
+    .ftree-node { border:1px solid var(--border); background:var(--cream2); text-align:center; padding:.6rem .85rem; }
+    .ftree-node--sm { min-width:128px; }
+    .ftree-node--md { min-width:148px; }
+    .ftree-node--featured { min-width:185px; background:var(--olive); color:var(--cream); border-color:var(--gold); padding:1rem 1.3rem; }
+    .ftree-name { font-family:var(--serif); font-size:.84rem; }
+    .ftree-dates { font-size:.61rem; letter-spacing:.06em; opacity:.5; margin-top:.18rem; }
+    .ftree-link-hint { font-size:.5rem; color:var(--gold); letter-spacing:.14em; text-transform:uppercase; margin-top:.45rem; }
+    .ftree-vline { width:1px; height:2rem; background:var(--border); margin:0 auto; }
+    .ftree-vline--tall { width:1px; height:2.5rem; background:var(--border); margin:0 auto; }
+    /* two separate lines then converge */
+    .ftree-conv { position:relative; width:100%; height:2.5rem; }
+    .ftree-conv::before { content:''; position:absolute; left:25%; right:25%; top:0; height:1px; background:var(--border); }
+    .ftree-conv::after { content:''; position:absolute; left:50%; top:0; bottom:0; width:1px; background:var(--border); transform:translateX(-50%); }
+    /* gen3 centered */
+    .ftree-gen3 { display:flex; justify-content:center; }
+    /* sibling bar + columns */
+    .ftree-hbar { height:1px; background:var(--border); width:65%; }
+    .ftree-sibs { display:flex; justify-content:space-around; align-items:flex-start; width:100%; }
+    .ftree-fam { flex:1; display:flex; flex-direction:column; align-items:center; padding:0 .5rem; }
+    .ftree-fam-head { display:flex; flex-direction:column; align-items:center; }
+    .ftree-children { display:flex; flex-wrap:wrap; gap:.5rem; justify-content:center; }
+    .ftree-child { border:1px solid var(--border); background:var(--cream); padding:.5rem .65rem; text-align:center; min-width:100px; }
+    .ftree-child .ftree-name { font-size:.77rem; }
+    .ftree-spouse { font-size:.58rem; font-family:var(--serif); color:var(--sage); margin-top:.3rem; }
+    .ftree-child-grp { display:flex; flex-direction:column; align-items:center; gap:.35rem; padding:.5rem .55rem; border:1px dashed rgba(140,136,126,.25); }
+    .ftree-grp-label { font-size:.55rem; letter-spacing:.1em; text-transform:uppercase; color:var(--light); }
+
     /* ─── CONTRIBUTE ─────────────────────────────────────── */
     .contribute {
       background: var(--sage);
@@ -1197,153 +1231,140 @@
   <section class="tree-section reveal" id="tree" style="padding-bottom:5rem;">
     <p class="section-eyebrow" style="text-align:center;">Six Generations</p>
     <h2 class="section-title" style="margin-bottom:1rem;">The Valderas <em>Family Tree</em></h2>
-    <div class="divider" style="margin: 1.5rem auto;"></div>
-    <p class="body-text" style="text-align:center; max-width:52ch; margin: 0 auto 3.5rem;">
+    <div class="divider" style="margin:1.5rem auto;"></div>
+    <p class="body-text" style="text-align:center; max-width:52ch; margin:0 auto 3.5rem;">
       From 19th-century Spain and the American frontier to Fort Worth, Texas —
       six generations of the Valderas family, sourced from the family's Ancestry records.
     </p>
 
-    <div class="tree-container">
-      <div style="display:flex; flex-direction:column; align-items:center; gap:0; min-width:960px;">
+    <div class="ftree-wrap">
+      <div class="ftree">
 
-        <!-- GEN 5 -->
-        <div style="width:100%; display:flex; justify-content:space-around; padding:0 2rem;">
-          <div style="display:flex; gap:.8rem; align-items:center;">
-            <div class="tree-node" style="padding:.7rem .9rem; min-width:150px; text-align:center;">
-              <div class="node-name" style="font-size:.82rem;">William J. Cunningham</div>
-              <div class="node-years" style="font-size:.65rem;">1857 – 1942</div>
+        <!-- ── GEN 5: Great-great-grandparents (two couples) ── -->
+        <div class="ftree-row--two">
+          <div class="ftree-half">
+            <div class="ftree-couple">
+              <div class="ftree-node ftree-node--sm"><div class="ftree-name">William J. Cunningham</div><div class="ftree-dates">1857 – 1942</div></div>
+              <span class="ftree-x">×</span>
+              <div class="ftree-node ftree-node--sm"><div class="ftree-name">Beatrice Kosinski</div><div class="ftree-dates">1869 – 1950</div></div>
             </div>
-            <div style="font-family:var(--serif); color:var(--gold); font-size:1rem; opacity:.5;">×</div>
-            <div class="tree-node" style="padding:.7rem .9rem; min-width:150px; text-align:center;">
-              <div class="node-name" style="font-size:.82rem;">Beatrice Kosinski</div>
-              <div class="node-years" style="font-size:.65rem;">1869 – 1950</div>
-            </div>
+            <div class="ftree-vline"></div>
           </div>
-          <div style="display:flex; gap:.8rem; align-items:center;">
-            <div class="tree-node" style="padding:.7rem .9rem; min-width:130px; text-align:center;">
-              <div class="node-name" style="font-size:.82rem;">Nicolas Garcia</div>
-              <div class="node-years" style="font-size:.65rem;">Spain</div>
+          <div class="ftree-half">
+            <div class="ftree-couple">
+              <div class="ftree-node ftree-node--sm"><div class="ftree-name">Nicolas Garcia</div><div class="ftree-dates">Spain</div></div>
+              <span class="ftree-x">×</span>
+              <div class="ftree-node ftree-node--sm"><div class="ftree-name">Francisca Lopez Gil</div><div class="ftree-dates">Spain</div></div>
             </div>
-            <div style="font-family:var(--serif); color:var(--gold); font-size:1rem; opacity:.5;">×</div>
-            <div class="tree-node" style="padding:.7rem .9rem; min-width:130px; text-align:center;">
-              <div class="node-name" style="font-size:.82rem;">Francisca Lopez Gil</div>
-              <div class="node-years" style="font-size:.65rem;">Spain</div>
+            <div class="ftree-vline"></div>
+          </div>
+        </div>
+
+        <!-- ── GEN 4: Great-grandparents (two couples) ── -->
+        <div class="ftree-row--two">
+          <div class="ftree-half">
+            <div class="ftree-couple">
+              <div class="ftree-node ftree-node--md"><div class="ftree-name">Luis Alberto Valderas Vargas</div><div class="ftree-dates">1901 – 1956</div></div>
+              <span class="ftree-x">×</span>
+              <div class="ftree-node ftree-node--md"><div class="ftree-name">Isabel Elizabeth Cunningham</div><div class="ftree-dates">1894 – 1979</div></div>
+            </div>
+            <div class="ftree-vline"></div>
+          </div>
+          <div class="ftree-half">
+            <div class="ftree-couple">
+              <div class="ftree-node ftree-node--md"><div class="ftree-name">Miguel Garcia Lopez</div><div class="ftree-dates">1919 –</div></div>
+              <span class="ftree-x">×</span>
+              <div class="ftree-node ftree-node--md"><div class="ftree-name">Maria Josefa Luna Baja</div><div class="ftree-dates">1925 –</div></div>
+            </div>
+            <div class="ftree-vline"></div>
+          </div>
+        </div>
+
+        <!-- converging lines → gen3 -->
+        <div class="ftree-conv"></div>
+
+        <!-- ── GEN 3: Grandparents ── -->
+        <div class="ftree-gen3">
+          <div class="ftree-couple">
+            <a href="harold.html" style="text-decoration:none;">
+              <div class="ftree-node ftree-node--featured">
+                <div class="ftree-name" style="color:var(--cream);">Harold Luis Valderas</div>
+                <div class="ftree-dates" style="color:rgba(245,241,234,.5);">1923 – 2007</div>
+                <div class="ftree-link-hint">View Full Story →</div>
+              </div>
+            </a>
+            <span class="ftree-x" style="font-size:1.05rem; opacity:.75;">×</span>
+            <div class="ftree-node ftree-node--md">
+              <div class="ftree-name">Marisa Garcia Luna</div>
+              <div class="ftree-dates">1945 –</div>
             </div>
           </div>
         </div>
 
-        <div style="width:100%; display:flex; justify-content:space-around; padding:0 11rem;">
-          <div style="width:1px; height:2rem; background:var(--border);"></div>
-          <div style="width:1px; height:2rem; background:var(--border);"></div>
-        </div>
+        <!-- vertical drop to sibling bar -->
+        <div class="ftree-vline--tall"></div>
+        <div class="ftree-hbar"></div>
 
-        <!-- GEN 4 -->
-        <div style="width:100%; display:flex; justify-content:space-around; padding:0 2rem;">
-          <div style="display:flex; gap:.8rem; align-items:center;">
-            <div class="tree-node" style="padding:.85rem 1.1rem; min-width:180px; text-align:center;">
-              <div class="node-name" style="font-size:.88rem;">Luis Alberto Valderas Vargas</div>
-              <div class="node-years">1901 – 1956</div>
+        <!-- ── GEN 2: Three children of Harold Luis & Marisa ── -->
+        <div class="ftree-sibs">
+
+          <!-- Harold Michael family -->
+          <div class="ftree-fam">
+            <div class="ftree-vline"></div>
+            <div class="ftree-fam-head">
+              <div class="ftree-couple">
+                <div class="ftree-node ftree-node--md"><div class="ftree-name">Harold Michael Valderas</div><div class="ftree-dates">1966 –</div></div>
+                <span class="ftree-x">×</span>
+                <div class="ftree-node ftree-node--md"><div class="ftree-name">Jennifer Lynn Palmer</div></div>
+              </div>
             </div>
-            <div style="font-family:var(--serif); color:var(--gold); font-size:1rem; opacity:.5;">×</div>
-            <div class="tree-node" style="padding:.85rem 1.1rem; min-width:180px; text-align:center;">
-              <div class="node-name" style="font-size:.88rem;">Isabel Elizabeth Cunningham</div>
-              <div class="node-years">1894 – 1979</div>
-            </div>
-          </div>
-          <div style="display:flex; gap:.8rem; align-items:center;">
-            <div class="tree-node" style="padding:.85rem 1.1rem; min-width:155px; text-align:center;">
-              <div class="node-name" style="font-size:.88rem;">Miguel Garcia Lopez</div>
-              <div class="node-years">1919 –</div>
-            </div>
-            <div style="font-family:var(--serif); color:var(--gold); font-size:1rem; opacity:.5;">×</div>
-            <div class="tree-node" style="padding:.85rem 1.1rem; min-width:155px; text-align:center;">
-              <div class="node-name" style="font-size:.88rem;">Maria Josefa Luna Baja</div>
-              <div class="node-years">1925 –</div>
+            <div class="ftree-vline"></div>
+            <div class="ftree-children">
+              <div class="ftree-child"><div class="ftree-name">Gabrielle L. Valderas</div><div class="ftree-spouse">× Jake Sobieski</div></div>
+              <div class="ftree-child"><div class="ftree-name">Isabel K. Valderas</div></div>
             </div>
           </div>
-        </div>
 
-        <div style="display:flex; width:55%; justify-content:space-around;">
-          <div style="width:1px; height:2rem; background:var(--border);"></div>
-          <div style="width:1px; height:2rem; background:var(--border);"></div>
-        </div>
-
-        <!-- GEN 3 -->
-        <div style="display:flex; gap:1.2rem; align-items:center; justify-content:center;">
-          <a href="harold.html" style="text-decoration:none;">
-            <div class="tree-node" style="background:var(--olive); color:var(--cream); border-color:var(--gold); padding:1.1rem 1.4rem; min-width:195px; text-align:center; transition:all .2s;">
-              <div class="node-name" style="color:var(--cream); font-size:.98rem;">Harold Luis Valderas</div>
-              <div class="node-years" style="color:rgba(245,241,234,.5);">1923 – 2007</div>
-              <div style="font-size:.55rem; color:var(--gold); margin-top:.5rem; letter-spacing:.15em; text-transform:uppercase;">View Full Story →</div>
+          <!-- Sean Kevin family -->
+          <div class="ftree-fam">
+            <div class="ftree-vline"></div>
+            <div class="ftree-fam-head">
+              <div class="ftree-node ftree-node--md"><div class="ftree-name">Sean Kevin Valderas</div></div>
             </div>
-          </a>
-          <div style="font-family:var(--serif); color:var(--gold); font-size:1.1rem; opacity:.6;">×</div>
-          <div class="tree-node" style="padding:1.1rem 1.4rem; min-width:175px; text-align:center;">
-            <div class="node-name" style="font-size:.98rem;">Marisa Garcia Luna</div>
-            <div class="node-years">1945 –</div>
-          </div>
-        </div>
-
-        <div style="width:1px; height:2rem; background:var(--border);"></div>
-
-        <!-- GEN 2 -->
-        <div style="display:flex; gap:.9rem; align-items:center; flex-wrap:wrap; justify-content:center;">
-          <div class="tree-node" style="padding:.8rem 1rem; min-width:125px; text-align:center;">
-            <div class="node-name" style="font-size:.82rem;">Luie Valderas</div>
-          </div>
-          <div class="tree-node" style="padding:.8rem 1rem; min-width:140px; text-align:center;">
-            <div class="node-name" style="font-size:.82rem;">Raymond Valderas</div>
-            <div class="node-years" style="font-size:.65rem;">1948 – 2015</div>
-          </div>
-          <div style="display:flex; gap:.9rem; align-items:center;">
-            <div class="tree-node" style="padding:.95rem 1.2rem; min-width:175px; text-align:center; border-color:var(--sage);">
-              <div class="node-name">Harold Michael Valderas</div>
-              <div class="node-years">1966 –</div>
-            </div>
-            <div style="font-family:var(--serif); color:var(--gold); font-size:1rem; opacity:.5;">×</div>
-            <div class="tree-node" style="padding:.95rem 1.2rem; min-width:160px; text-align:center; border-color:var(--sage);">
-              <div class="node-name">Jennifer Lynn Palmer</div>
+            <div class="ftree-vline"></div>
+            <div class="ftree-children">
+              <div class="ftree-child-grp">
+                <div class="ftree-grp-label">Prev. relationship</div>
+                <div class="ftree-child"><div class="ftree-name">Sean Kevin Valderas II</div></div>
+              </div>
+              <div class="ftree-child-grp">
+                <div class="ftree-grp-label">× Teresa</div>
+                <div class="ftree-child"><div class="ftree-name">Cora</div></div>
+                <div class="ftree-child"><div class="ftree-name">Ian</div></div>
+              </div>
             </div>
           </div>
-          <div class="tree-node" style="padding:.8rem 1rem; min-width:140px; text-align:center;">
-            <div class="node-name" style="font-size:.82rem;">Elizabeth A. Valderas</div>
-          </div>
-          <div class="tree-node" style="padding:.8rem 1rem; min-width:140px; text-align:center;">
-            <div class="node-name" style="font-size:.82rem;">Sean Kevin Valderas</div>
-          </div>
-        </div>
 
-        <div style="width:1px; height:2rem; background:var(--border);"></div>
+          <!-- Elizabeth family -->
+          <div class="ftree-fam">
+            <div class="ftree-vline"></div>
+            <div class="ftree-fam-head">
+              <div class="ftree-node ftree-node--md"><div class="ftree-name">Elizabeth A. Valderas</div></div>
+            </div>
+            <div class="ftree-vline"></div>
+            <div class="ftree-children">
+              <div class="ftree-child-grp">
+                <div class="ftree-grp-label">With Cristobal Torres</div>
+                <div class="ftree-child"><div class="ftree-name">Cristobal (Tobalo) Torres Valderas</div></div>
+                <div class="ftree-child"><div class="ftree-name">Marisa Torres Valderas</div></div>
+              </div>
+            </div>
+          </div>
 
-        <!-- GEN 1 -->
-        <div style="display:flex; gap:.9rem; justify-content:center; flex-wrap:wrap;">
-          <div class="tree-node" style="padding:.95rem 1.2rem; min-width:160px; text-align:center;">
-            <div class="node-name">Gabrielle L. Valderas</div>
-            <div style="font-family:var(--serif); color:var(--gold); font-size:.85rem; margin-top:.4rem; opacity:.6;">× Jake Sobieski</div>
-          </div>
-          <div class="tree-node" style="padding:.95rem 1.2rem; min-width:155px; text-align:center;">
-            <div class="node-name">Isabel K. Valderas</div>
-          </div>
-          <div class="tree-node" style="padding:.95rem 1.2rem; min-width:175px; text-align:center;">
-            <div class="node-name">Cristobal J. Torres Valderas</div>
-            <div class="node-years" style="font-size:.65rem; margin-top:.3rem;">↳ Marisa Torres Valderas</div>
-          </div>
-          <div class="tree-node" style="padding:.95rem 1.2rem; min-width:145px; text-align:center;">
-            <div class="node-name">Sean Kevin Valderas II</div>
-          </div>
-          <div class="tree-node" style="padding:.8rem 1rem; min-width:100px; text-align:center;">
-            <div class="node-name" style="font-size:.88rem;">Ian</div>
-          </div>
-          <div class="tree-node" style="padding:.8rem 1rem; min-width:100px; text-align:center;">
-            <div class="node-name" style="font-size:.88rem;">Cora</div>
-          </div>
-          <div class="tree-node" style="padding:.8rem 1rem; min-width:100px; text-align:center;">
-            <div class="node-name" style="font-size:.88rem;">Teresa</div>
-          </div>
-        </div>
+        </div><!-- end ftree-sibs -->
 
-      </div>
-    </div>
+      </div><!-- end ftree -->
+    </div><!-- end ftree-wrap -->
 
     <p style="text-align:center; margin-top:3rem; font-size:.75rem; color:var(--light); letter-spacing:.08em;">
       Data sourced from the family's
