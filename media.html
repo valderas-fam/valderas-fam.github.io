@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Photos & Videos — Valderas Family</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Jost:wght@300;400&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --serif: 'Cormorant Garamond', Georgia, serif;
+      --sans: 'Jost', system-ui, sans-serif;
+      --cream: #F5F1EA;
+      --cream2: #EFEBE2;
+      --olive: #3A4234;
+      --sage: #6B7B60;
+      --sage-lt: #A3B496;
+      --gold: #C9A96E;
+      --dark: #1E1D1B;
+      --mid: #4A4540;
+      --light: #8C887E;
+      --border: rgba(140,136,126,.22);
+    }
+
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--sans); color: var(--dark); background: var(--cream); font-weight: 300; line-height: 1.6; }
+
+    /* ─── NAV ──────────────────────────────────────────── */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1.4rem 3.5rem;
+      background: rgba(245,241,234,.95);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-logo { font-family: var(--serif); font-size: 1.5rem; font-weight: 300; letter-spacing: .08em; color: var(--dark); text-decoration: none; }
+    .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+    .nav-links a { font-size: .7rem; letter-spacing: .18em; text-transform: uppercase; text-decoration: none; color: var(--light); transition: color .2s; }
+    .nav-links a:hover { color: var(--dark); }
+    .nav-links a.active { color: var(--dark); border-bottom: 1px solid var(--gold); padding-bottom: 2px; }
+    .nav-cta { font-size: .7rem; letter-spacing: .18em; text-transform: uppercase; text-decoration: none; color: var(--olive); border: 1px solid var(--olive); padding: .55rem 1.2rem; transition: all .2s; }
+    .nav-cta:hover { background: var(--olive); color: var(--cream); }
+
+    /* ─── HERO ──────────────────────────────────────────── */
+    .page-hero {
+      background: var(--dark);
+      color: var(--cream);
+      padding: 6rem 3.5rem 5rem;
+      text-align: center;
+    }
+    .page-hero-eyebrow {
+      font-size: .65rem;
+      letter-spacing: .25em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1.2rem;
+    }
+    .page-hero-title {
+      font-family: var(--serif);
+      font-size: clamp(3rem, 6vw, 5.5rem);
+      font-weight: 300;
+      line-height: 1.1;
+      margin-bottom: 1.2rem;
+    }
+    .page-hero-desc {
+      font-size: .85rem;
+      color: rgba(245,241,234,.55);
+      max-width: 46ch;
+      margin: 0 auto;
+      line-height: 1.8;
+    }
+    .divider {
+      width: 2.5rem; height: 1px;
+      background: var(--gold);
+      margin: 1.5rem auto;
+      opacity: .6;
+    }
+
+    /* ─── SECTION SHARED ────────────────────────────────── */
+    .section { padding: 6rem 3.5rem; }
+    .section-eyebrow {
+      font-size: .62rem; letter-spacing: .25em; text-transform: uppercase;
+      color: var(--sage); margin-bottom: .8rem;
+    }
+    .section-title {
+      font-family: var(--serif); font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 300; line-height: 1.15; margin-bottom: 1.5rem;
+    }
+    .section-title em { font-style: italic; color: var(--sage); }
+    .section-desc {
+      font-size: .85rem; color: var(--light); max-width: 52ch;
+      line-height: 1.8; margin-bottom: 3rem;
+    }
+
+    /* ─── VIDEOS ─────────────────────────────────────────── */
+    .videos-section { background: var(--cream2); }
+    .video-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+    }
+    .video-card { background: var(--cream); border: 1px solid var(--border); }
+    .video-card--harold { border-color: var(--gold); }
+    .video-embed {
+      position: relative;
+      width: 100%;
+      padding-bottom: 56.25%;
+      background: var(--dark);
+    }
+    .video-embed iframe {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      display: block;
+    }
+    .video-info { padding: 1.2rem 1.4rem 1.5rem; }
+    .video-badge {
+      display: inline-block;
+      font-size: .55rem; letter-spacing: .16em; text-transform: uppercase;
+      color: var(--gold); border: 1px solid var(--gold);
+      padding: .18rem .55rem; margin-bottom: .65rem;
+    }
+    .video-title {
+      font-family: var(--serif); font-size: 1.05rem; font-weight: 400;
+      line-height: 1.3; margin-bottom: .4rem;
+    }
+    .video-year {
+      font-size: .68rem; color: var(--light); letter-spacing: .08em;
+    }
+
+    /* ─── PHOTOS ─────────────────────────────────────────── */
+    .photos-section { background: var(--cream); }
+    .era-block { margin-bottom: 4.5rem; }
+    .era-block:last-child { margin-bottom: 0; }
+    .era-label {
+      font-size: .6rem; letter-spacing: .22em; text-transform: uppercase;
+      color: var(--sage); border-bottom: 1px solid var(--border);
+      padding-bottom: .6rem; margin-bottom: 1.5rem;
+    }
+    .photo-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 1rem;
+    }
+    .photo-card {
+      position: relative;
+      overflow: hidden;
+      background: var(--dark);
+      aspect-ratio: 4/3;
+      cursor: default;
+    }
+    .photo-card img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform .4s ease;
+    }
+    .photo-card:hover img { transform: scale(1.04); }
+    .photo-caption {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      background: linear-gradient(transparent, rgba(0,0,0,.6));
+      padding: .7rem .85rem .6rem;
+    }
+    .photo-caption span {
+      display: block;
+      font-size: .65rem;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: rgba(245,241,234,.85);
+    }
+
+    /* Harold section special styling */
+    .harold-section { background: var(--dark); padding: 4rem 3.5rem; }
+    .harold-section .era-label { color: var(--gold); border-color: rgba(201,169,110,.3); }
+    .harold-section .photo-card { border: 1px solid rgba(201,169,110,.2); }
+
+    /* ─── FOOTER ─────────────────────────────────────────── */
+    footer {
+      background: var(--dark); color: var(--cream);
+      padding: 4rem 3.5rem 2.5rem;
+    }
+    .footer-top {
+      display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr;
+      gap: 3rem; margin-bottom: 4rem;
+    }
+    .footer-logo { font-family: var(--serif); font-size: 2rem; font-weight: 300; margin-bottom: 1rem; letter-spacing: .05em; }
+    .footer-tagline { font-size: .75rem; line-height: 1.8; opacity: .55; max-width: 22ch; }
+    .footer-col-title { font-size: .6rem; letter-spacing: .22em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.2rem; opacity: .8; }
+    .footer-col ul { list-style: none; }
+    .footer-col li { margin-bottom: .6rem; }
+    .footer-col a { font-size: .75rem; opacity: .5; text-decoration: none; color: var(--cream); transition: opacity .2s; }
+    .footer-col a:hover { opacity: 1; }
+    .footer-bottom { border-top: 1px solid rgba(245,241,234,.08); padding-top: 2rem; display: flex; justify-content: space-between; align-items: center; }
+    .footer-bottom span { font-size: .7rem; opacity: .35; letter-spacing: .08em; }
+
+    @media (max-width: 900px) {
+      nav { padding: 1rem 1.5rem; }
+      .nav-links { display: none; }
+      .section { padding: 4rem 1.5rem; }
+      .video-grid { grid-template-columns: 1fr; }
+      .photo-grid { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); }
+      .harold-section { padding: 3rem 1.5rem; }
+      .footer-top { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ─── NAV ──────────────────────────────────────────────── -->
+  <nav>
+    <a href="index.html" class="nav-logo">Valderas</a>
+    <ul class="nav-links">
+      <li><a href="index.html#origins">Origins</a></li>
+      <li><a href="index.html#timeline">History</a></li>
+      <li><a href="index.html#family">Family</a></li>
+      <li><a href="index.html#tree">Family Tree</a></li>
+      <li><a href="harold.html">Judge Harold</a></li>
+      <li><a href="media.html" class="active">Photos &amp; Videos</a></li>
+    </ul>
+    <a href="index.html#contribute" class="nav-cta">Contribute</a>
+  </nav>
+
+  <!-- ─── HERO ──────────────────────────────────────────────── -->
+  <div class="page-hero">
+    <p class="page-hero-eyebrow">The Valderas Archive</p>
+    <h1 class="page-hero-title">Photos &amp; <em style="font-style:italic; color:var(--gold);">Videos</em></h1>
+    <div class="divider"></div>
+    <p class="page-hero-desc">
+      A visual record of the Valderas family — spanning over a century,
+      from the earliest known photographs to the present day.
+    </p>
+  </div>
+
+  <!-- ─── VIDEOS ────────────────────────────────────────────── -->
+  <section class="section videos-section" id="videos">
+    <p class="section-eyebrow">Moving Pictures</p>
+    <h2 class="section-title">Family <em>Videos</em></h2>
+    <div class="divider" style="margin:0 0 2.5rem;"></div>
+    <p class="section-desc">Recorded moments, interviews, and gatherings from across the decades.</p>
+
+    <div class="video-grid">
+
+      <!-- Judge Harold — Home Interview (2001) -->
+      <div class="video-card video-card--harold">
+        <div class="video-embed">
+          <iframe src="https://www.youtube.com/embed/0fOBxML2ARc"
+            title="2001 Judge Harold L. Valderas Home Interview"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen>
+          </iframe>
+        </div>
+        <div class="video-info">
+          <span class="video-badge">Judge Harold</span>
+          <div class="video-title">Judge Harold L. Valderas — Home Interview</div>
+          <div class="video-year">2001</div>
+        </div>
+      </div>
+
+      <!-- 2001 Feria Party -->
+      <div class="video-card">
+        <div class="video-embed">
+          <iframe src="https://www.youtube.com/embed/bEVK5jVqlzw"
+            title="2001 Feria Party | Fort Worth"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen>
+          </iframe>
+        </div>
+        <div class="video-info">
+          <div class="video-title">Feria Party</div>
+          <div class="video-year">2001 · Fort Worth</div>
+        </div>
+      </div>
+
+      <!-- 1992 Running of the Bulls -->
+      <div class="video-card">
+        <div class="video-embed">
+          <iframe src="https://www.youtube.com/embed/xD_qZVURxSQ"
+            title="1992 Running of the Bulls"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen>
+          </iframe>
+        </div>
+        <div class="video-info">
+          <div class="video-title">Running of the Bulls</div>
+          <div class="video-year">1992</div>
+        </div>
+      </div>
+
+      <!-- Valderas Guys Weekend 2017 -->
+      <div class="video-card">
+        <div class="video-embed">
+          <iframe src="https://www.youtube.com/embed/rf-i9adQbHI"
+            title="Valderas Guys Weekend 2017"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen>
+          </iframe>
+        </div>
+        <div class="video-info">
+          <div class="video-title">Valderas Guys Weekend</div>
+          <div class="video-year">2017</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ─── JUDGE HAROLD PHOTOS ───────────────────────────────── -->
+  <div class="harold-section" id="harold-photos">
+    <p class="section-eyebrow" style="color:var(--gold);">Judge Harold Luis Valderas · 1923–2007</p>
+    <h2 class="section-title" style="color:var(--cream);">Military &amp; <em style="color:var(--gold);">Judicial</em> Life</h2>
+    <div class="divider"></div>
+    <p class="section-desc" style="color:rgba(245,241,234,.5); margin-bottom:2rem;">
+      Photographs of Judge Harold Luis Valderas — Aviation Cadet, Lt. Colonel, and Senior District Judge.
+      <a href="harold.html" style="color:var(--gold); text-decoration:none; margin-left:.5rem;">View his full story →</a>
+    </p>
+
+    <div class="era-label" style="color:var(--gold); border-color:rgba(201,169,110,.25);">Photographs</div>
+    <div class="photo-grid">
+
+      <div class="photo-card">
+        <img src="images/judge-harold-portrait.jpg" alt="Judge Harold Luis Valderas — Portrait">
+        <div class="photo-caption"><span>Portrait</span></div>
+      </div>
+
+      <div class="photo-card">
+        <img src="images/judge-harold-headshot.jpg" alt="Judge Harold — Official Headshot">
+        <div class="photo-caption"><span>Headshot</span></div>
+      </div>
+
+      <div class="photo-card">
+        <img src="images/judge-harold-cadet.jpg" alt="Aviation Cadet Harold Valderas">
+        <div class="photo-caption"><span>Aviation Cadet</span></div>
+      </div>
+
+      <div class="photo-card">
+        <img src="images/judge-harold-uniform.jpg" alt="Judge Harold in Uniform">
+        <div class="photo-caption"><span>In Uniform</span></div>
+      </div>
+
+      <div class="photo-card">
+        <img src="images/judge-harold-korea.jpg" alt="Judge Harold — Korea">
+        <div class="photo-caption"><span>Korea</span></div>
+      </div>
+
+      <div class="photo-card">
+        <img src="images/judge-harold-military-portrait.avif" alt="Judge Harold — Military Portrait">
+        <div class="photo-caption"><span>Military Portrait</span></div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ─── FAMILY PHOTOS ─────────────────────────────────────── -->
+  <section class="section photos-section" id="photos">
+    <p class="section-eyebrow">Through the Decades</p>
+    <h2 class="section-title">Family <em>Photographs</em></h2>
+    <div class="divider" style="margin:0 0 3rem;"></div>
+
+    <!-- c. 1900 -->
+    <div class="era-block">
+      <div class="era-label">c. 1900 — Early Years</div>
+      <div class="photo-grid">
+
+        <div class="photo-card">
+          <img src="images/1900-vargas-anita-manuel-wedding.jpg" alt="Vargas Anita-Manuel Wedding">
+          <div class="photo-caption"><span>Vargas Anita-Manuel Wedding</span></div>
+        </div>
+
+        <div class="photo-card">
+          <img src="images/1900-butch-miller-aunt-mae.jpg" alt="Butch Miller Aunt Mae">
+          <div class="photo-caption"><span>Butch Miller, Aunt Mae</span></div>
+        </div>
+
+        <div class="photo-card">
+          <img src="images/1900-luis-carmelina-ray-luisito.jpg" alt="Luis, Carmelina, Ray, Luisito">
+          <div class="photo-caption"><span>Luis, Carmelina, Ray &amp; Luisito</span></div>
+        </div>
+
+        <div class="photo-card">
+          <img src="images/1900-luis-harold-luisito.jpg" alt="Luis, Harold, Luisito">
+          <div class="photo-caption"><span>Luis, Harold &amp; Luisito</span></div>
+        </div>
+
+        <div class="photo-card">
+          <img src="images/1900-mancilla-baldemar-valderas.jpg" alt="Mancilla Baldemar-Valderas">
+          <div class="photo-caption"><span>Mancilla Baldemar-Valderas</span></div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- 1970s -->
+    <div class="era-block">
+      <div class="era-label">1970s</div>
+      <div class="photo-grid">
+
+        <div class="photo-card">
+          <img src="images/1970-carswell-tarmack.jpg" alt="Carswell Tarmack">
+          <div class="photo-caption"><span>Carswell Tarmack</span></div>
+        </div>
+
+        <div class="photo-card">
+          <img src="images/1970-valderas-family.jpg" alt="Valderas Family">
+          <div class="photo-caption"><span>Valderas Family</span></div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- 2010s -->
+    <div class="era-block">
+      <div class="era-label">2010s</div>
+      <div class="photo-grid">
+
+        <div class="photo-card">
+          <img src="images/2010-valderas-men.jpg" alt="Valderas Men">
+          <div class="photo-caption"><span>Valderas Men</span></div>
+        </div>
+
+        <div class="photo-card">
+          <img src="images/2011-valderas-men.jpg" alt="Valderas Men">
+          <div class="photo-caption"><span>Valderas Men</span></div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- 2020s -->
+    <div class="era-block">
+      <div class="era-label">2020s</div>
+      <div class="photo-grid">
+
+        <div class="photo-card">
+          <img src="images/2021-marisa-and-maribel.jpg" alt="Marisa and Maribel">
+          <div class="photo-caption"><span>Marisa and Maribel</span></div>
+        </div>
+
+        <div class="photo-card">
+          <img src="images/2022-ians-graduation.jpg" alt="Ian's Graduation">
+          <div class="photo-caption"><span>Ian's Graduation</span></div>
+        </div>
+
+        <div class="photo-card">
+          <img src="images/2022-valderas-men.jpg" alt="Valderas Men">
+          <div class="photo-caption"><span>Valderas Men</span></div>
+        </div>
+
+        <div class="photo-card">
+          <img src="images/2023-feria-party.jpg" alt="Feria Party">
+          <div class="photo-caption"><span>Feria Party</span></div>
+        </div>
+
+        <div class="photo-card">
+          <img src="images/2024-gabrielle-marisa-alan.jpg" alt="Gabrielle, Marisa, Alan">
+          <div class="photo-caption"><span>Gabrielle, Marisa &amp; Alan</span></div>
+        </div>
+
+        <div class="photo-card">
+          <img src="images/2025-marisa-bday.jpg" alt="Marisa's Birthday">
+          <div class="photo-caption"><span>Marisa's Birthday</span></div>
+        </div>
+
+        <div class="photo-card">
+          <img src="images/2025-marisa-birthday.jpg" alt="Marisa's Birthday">
+          <div class="photo-caption"><span>Marisa's Birthday</span></div>
+        </div>
+
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ─── FOOTER ────────────────────────────────────────────── -->
+  <footer>
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="footer-logo">Valderas</div>
+        <p class="footer-tagline">
+          A living archive of the Valderas family — from the valleys of León, Spain
+          to the Americas and beyond.
+        </p>
+      </div>
+      <div class="footer-col">
+        <p class="footer-col-title">Explore</p>
+        <ul>
+          <li><a href="index.html#origins">Family Origins</a></li>
+          <li><a href="index.html#timeline">Our History</a></li>
+          <li><a href="index.html#family">Family Members</a></li>
+          <li><a href="index.html#tree">Family Tree</a></li>
+          <li><a href="harold.html">Judge Harold Valderas</a></li>
+          <li><a href="media.html">Photos &amp; Videos</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <p class="footer-col-title">Media</p>
+        <ul>
+          <li><a href="#videos">Videos</a></li>
+          <li><a href="#harold-photos">Judge Harold Photos</a></li>
+          <li><a href="#photos">Family Photos</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <p class="footer-col-title">Contribute</p>
+        <ul>
+          <li><a href="index.html#contribute">Share a Photo</a></li>
+          <li><a href="index.html#contribute">Submit a Video</a></li>
+          <li><a href="mailto:family@valderas.com">family@valderas.com</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Valderas Family · valderas.com</span>
+      <span>Rooted in León, Spain · Reaching Every Corner of the World</span>
+    </div>
+  </footer>
+
+</body>
+</html>
